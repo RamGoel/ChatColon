@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Now!</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="mainBody " class="d-flex flex-column bg-primary " style="height: 100vh;">
+
+            <form action="/login" method="POST"  class="m-auto bdRad  form bg-dark p-4 d-flex flex-column " style="width:400px" id="userLoginForm">
+                <h2 class=" text-center text-white">Join'e Code</h2>
+                <p id="validError" class=" text-success text-center"><%=validError %></p>
+                <input id="userName" type="text" name="userName" placeholder="Display Name" value="<%= nameValue %>" class="form-control m-1 bg-light br3 p-2 border-0 border-black" required >
+                <input id="roomName" type="text" name="roomName" placeholder="Room Name" value="<%= roomValue %>" class="form-control m-1 bg-light br3 p-2 border-0 border-black" required >
+                <button type="submit" class="form-control btn-primary m-1">Let's Go</button>
+            </form>
+     
+            <script src="socket.io/socket.io.js"></script>
+    </div>
+</body>
+</html>
