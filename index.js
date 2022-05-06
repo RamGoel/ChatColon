@@ -39,6 +39,12 @@ app.get('/', (req, res) => {
 
 })
 
+
+app.get('/:roomName',(req,res)=>{
+    var room=String(req.params.roomName)
+    res.render('index',{nameValue:null,validError:null,roomValue:room})
+})
+
 //Handling Login of User
 app.post('/login', (req, res) => {
     var nameOfUser = req.body.userName;
@@ -50,7 +56,8 @@ app.post('/login', (req, res) => {
             code: "print('Hello')",
             output: "Output Comes Here",
             userName: nameOfUser ,
-            roomName:nameOfRoom
+            roomName:nameOfRoom,
+            inviteLink:`/${nameOfRoom}`
         })
 
 

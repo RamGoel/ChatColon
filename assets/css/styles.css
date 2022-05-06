@@ -6,6 +6,44 @@ button,label:hover{
 	transition: 0.5s;
 }
 
+
+#execContain{
+	width:30%;
+
+}
+
+#sendBtnContain{
+	padding: 5px;
+}
+#messageInput{
+	border-top-left-radius: 5px !important;
+	border-bottom-left-radius: 5px !important;
+	border-top-right-radius: 0px !important;
+	border-bottom-right-radius: 0px !important;
+
+}
+
+#langDropDown{
+	position: absolute;
+	top:30px;
+
+}
+
+#messageInput:focus{
+	box-shadow: none;
+}
+
+#langDropDown .dropdown-item:hover{
+	background-color: rgb(199, 194, 194);
+
+}
+#chatBox{
+	background-color: whitesmoke;
+}
+
+#execContain i{
+	font-size: 20px;
+}
 .mainDiv {
 	display: flex;
 	flex-direction: row;

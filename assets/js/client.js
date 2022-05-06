@@ -17,7 +17,7 @@ const memberList = document.getElementById('memberList')
 const memberPara = document.getElementById('member')
 const messageTone = document.getElementById('messageTone')
 const codeInput = document.getElementById('codeInput')
-const codeInputBtn = document.getElementById('codeInputButton')
+const codeBtn = document.getElementById('codeBtn')
 const codeOutput = document.getElementById('codeOutput')
 
 
@@ -25,12 +25,12 @@ const codeOutput = document.getElementById('codeOutput')
 
 //Function to Scrolll
 
-function scrollChat(heightOfMessage){
+scrollChat=(heightOfMessage)=>{
     messageDiv.scrollTop=messageDiv.offsetHeight+heightOfMessage
 }
 
 //Function to beep
-function playSound() {   
+function playSound(){   
     
     messageTone.play()  
 } 
@@ -42,7 +42,7 @@ function playSound() {
 
 
 //Function to Add a new Message
-function generateMessage(data){
+generateMessage=(data)=>{
   
     //Creating a New Message
     var node=messageDiv.lastElementChild;
@@ -70,7 +70,7 @@ function generateMessage(data){
 
 
 //Function to Update Member List
-function membersShow(list){
+membersShow=(list)=>{
 
 
  
@@ -113,9 +113,6 @@ socket.on('userMessageRender',data=>{
 
 
 
-
-
-
 //Updating the Members List
 socket.on('memberListRender',(data)=>{
 
@@ -127,19 +124,33 @@ socket.on('memberListRender',(data)=>{
 
 
 socket.on('codeCompiled',(data)=>{
-    codeInputBtn.innerHTML="COMPILE"
+    codeBtn.classList.remove('fa-spinner')
+    codeBtn.classList.remove('fa-spin')
+    codeBtn.classList.add('fa-play')
     codeOutput.value=data
 })
 
 
+showDrop=()=>{
+    document.getElementById('langDropDown').classList.toggle('d-none')
+}
 
+var langText=''
+setLang=(id)=>{
+    langText=document.getElementById(id).innerText
+    document.getElementById('dropdownMenuButton').innerHTML=langText
+    showDrop()
+    codeBtn.classList.remove('fa-spinner')
+    codeBtn.classList.remove('fa-spin')
+    codeBtn.classList.add('fa-play')
+}
 
 
 //Getting Time
 const date=new Date();
 
 //When User Clicks on Send to Send Message
-function sendMessage(element){
+sendMessage=(element)=>{
     //Only Send Message if it is not empty
     if(element.value!=""){
 
@@ -155,18 +166,33 @@ function sendMessage(element){
     messageInput.focus()
 }
 
+messageInput.addEventListener('keyup',({key})=>{
+    if(key=="Enter"){
+        messageBtn.click()
+    }
+})
+
 
 
 //When User CLicks Compile Button 
-function codeCompile(){
+codeCompile=()=>{
     
-    codeInputBtn.innerHTML="Loading..."
-    //Emitting Code to Server
-    socket.emit('codeWritten',{
-        code:codeInput.value,
-        language:"py",
-        input:" ",
-    })
+
+    if(langText==''){
+        codeOutput.innerHTML='Select Language First'
+    }else{
+
+        codeBtn.classList.remove('fa-play')
+        codeBtn.classList.add('fa-spinner')
+        codeBtn.classList.add('fa-spin')
+
+        //Emitting Code to Server
+        socket.emit('codeWritten',{
+            code:codeInput.value,
+            language:langText,
+            input:" ",
+        })
+    }
 
 }
 

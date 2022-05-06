@@ -34,6 +34,8 @@
 
                     <p id="uname" class="m-0 p-0"><%=userName%></p>@
                     <p id="rname" class="m-0 p-0"><%=roomName%></p>
+
+                    <a  href="<%=inviteLink%>" target="_blank" class=" btn btn-success py-0 px-2 mx-2">Invite Link</a>
                 </div>
 
                 <label id="toggleBtn" class="switch" onchange="dkMode()">
@@ -58,7 +60,7 @@
             <div class="my-1 rounded form shadow-lg darkBg p-4 d-flex flex-column col-md mx-2"
                 style="width:500px;height:560px" id="userLoginForm">
                 <h2 class=" text-center  ">Start Chatting!</h2>
-                <div id="chatBox" class="conatiner-fluid bg-success bdRad m-1 p-2"
+                <div id="chatBox" class="conatiner-fluid bdRad m-1 p-2"
                     style="height: 80%;overflow-y: scroll;">
                     <div id="messageDiv" class=" bdRad d-flex flex-column justify-content-between rounded p-1 m-1" style="width: fit-content;">
                         <div id="msgInside" class="d-flex flex-row align-items-center justify-content-between">
@@ -72,29 +74,39 @@
                        
                     </div>
                 </div>
-                <div id="messageForm">
-                    <input type="text" placeholder="Enter your Message!" name="chatMesage"
-                        class=" form-control m-1 bg-light br3 p-2 border-0 border-black" style="white-space: pre;" id="messageInput" required>
-                    <button class="form-control btn-primary m-1" id="messageBtn" type="button" onclick="sendMessage(document.getElementById('messageInput'))">Send</button>
+                <div id="d-flex" class="d-flex align-items-center">
+                    <input type="text" autocomplete="off" placeholder="Enter your Message!" name="chatMesage"
+                        class="form-control my-2 bg-light p-3 rounded-left border-0 border-black" style="white-space: pre;" id="messageInput" required>
+                    <span class="bg-light rounded-right" id="sendBtnContain"><i id="messageBtn" class="fa fa-paper-plane btn btn-dark rounded-circle px-1 py-1 " onclick="sendMessage(document.getElementById('messageInput'))"></i></span>
                 </div>
             </div>
 
             <div 
                 class=" shadow-lg m-auto rounded form darkBg p-4 d-flex flex-column col-md mx-2" style="width:500px"
                 id="userLoginForm">
-                <h2 class=" text-center ">Let's Code!</h2>
-                <textarea type="text" style="height: 200px;" placeholder="print('Hello') # Write Python Code"
-                    class="form-control border-2 border-light  m-1 darkBg  p-2 "  value="" required name="codeInput" rows="6"
-                    id="codeInput"></textarea>
-                <div class="d-flex">
+                <div class="d-flex justify-content-between align-items-center">
 
-                    <button type="button" class="form-control btn-primary m-1"
-                    onclick="codeCompile()"
-                    id="codeInputButton" >COMPILE</button>
-                <button type="button" class="form-control btn-primary m-1" onclick="sendMessage(document.getElementById('codeInput'))"
-                    id="" >SHARE</button>
+                    <h2 class=" text-center ">Let's Code!</h2>
+                    <div class="d-flex align-items-center  justify-content-between" id="execContain">
+                        <i class="fa fa-play execIcon " onclick="codeCompile()" id="codeBtn"></i>
+                        <i class="fa fa-share execIcon " onclick="sendMessage(document.getElementById('codeInput'))"></i>
+                        <div class="dropdown">
+                            <button onclick="showDrop()" class="btn btn-secondary dropdown-toggle px-2 py-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              py
+                            </button>
+                            <div class="bg-light d-none" id="langDropDown" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#" id="jsLang" onclick="setLang(this.id)">js</a>
+                              <a class="dropdown-item" href="#" id="clang" onclick="setLang(this.id)">c</a>
+                              <a class="dropdown-item" href="#" id="cpplang" onclick="setLang(this.id)">cpp</a>
+                              <a class="dropdown-item" href="#" id="pylang" onclick="setLang(this.id)">py</a>
+                            </div>
+                          </div>
+                    </div>
+                   
                 </div>
-               
+                <textarea type="text" style="height: 250px;" placeholder="# Start Writing the Code"
+                    class="form-control border-2 border-light  m-1 darkBg  p-2 "  value="" required name="codeInput" rows="10"
+                    id="codeInput"></textarea>
                 <textarea type="text" style="height: 200px;" placeholder="Output"
                     class="form-control m-1 bg-light br3 p-2 border-0 border-black" required readonly rows="6" placeholder="Output Comes Here" id="codeOutput"></textarea>
             </form>

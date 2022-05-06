@@ -14,8 +14,8 @@
             <form action="/login" method="POST"  class="m-auto bdRad  form bg-dark p-4 d-flex flex-column " style="width:400px" id="userLoginForm">
                 <h2 class=" text-center text-white">Join'e Code</h2>
                 <p id="validError" class=" text-success text-center"><%=validError %></p>
-                <input id="userName" type="text" name="userName" placeholder="Display Name" value="<%= nameValue %>" class="form-control m-1 bg-light br3 p-2 border-0 border-black" required >
-                <input id="roomName" type="text" name="roomName" placeholder="Room Name" value="<%= roomValue %>" class="form-control m-1 bg-light br3 p-2 border-0 border-black" required >
+                <input id="userName" type="text" name="userName" placeholder="Display Name" value="<%= nameValue %>"  class="form-control m-1 bg-light br3 p-2 border-0 border-black" required >
+                <input id="roomName" type="text" name="roomName" placeholder="Room Name" value="<%= roomValue %>" onchange="checkVal(this.value)" class="form-control m-1 bg-light br3 p-2 border-0 border-black" required >
                 <button type="submit" class="form-control btn-primary m-1">Let's Go</button>
             </form>
      
