@@ -31,14 +31,16 @@ function sidebarView() {
 
 
 
-    document.getElementById('inputfile').addEventListener('change', function() {
-            
-        var fr=new FileReader();
-        fr.onload=function(){
-            document.getElementById('codeInput').textContent=fr.result; }
-              
-        fr.readAsText(this.files[0]);
+document.getElementById('inputfile').addEventListener('change', function () {
 
-    })
+    console.log("DOne")
+    var fr = new FileReader();
+    fr.onload = function () {
+        document.getElementById('codeInput').textContent = fr.result;
+    }
 
+    fr.readAsText(this.files[0]);
 
+    this.value=null
+
+})
