@@ -29,6 +29,19 @@ button,label:hover{
 
 }
 
+.right{
+	float: right;
+}
+.left{
+	float: left;
+}
+
+#inputfile{
+	opacity: 0;
+	width: 30px;
+	position: absolute;
+	z-index: -3;
+}
 #messageInput:focus{
 	box-shadow: none;
 }

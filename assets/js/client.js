@@ -52,6 +52,7 @@ generateMessage=(data)=>{
     message.firstElementChild.firstElementChild.innerHTML=data.sender;
     message.firstElementChild.lastElementChild.innerHTML=data.time;
     message.lastElementChild.innerHTML=data.message;
+    // message.classList.add(data.pos);
     message.style.whiteSpace="pre";
     message.classList.add('darkBg')
 
@@ -151,9 +152,11 @@ const date=new Date();
 
 //When User Clicks on Send to Send Message
 sendMessage=(element)=>{
+    const time=new Date()
     //Only Send Message if it is not empty
-    if(element.value!=""){
-
+    if(element.value!="" ){
+        
+        // generateMessage({message:element.value,sender:"You",time:`${time.getHours()}:${time.getMinutes()}`,pos:"right"})
         //Emitting the Message to Server
         socket.emit('userMessage',{
             message:element.value,

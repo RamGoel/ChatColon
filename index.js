@@ -120,7 +120,8 @@ io.on("connection", socket => {
         socket.to(data.roomName).emit('userMessageRender', {
             message: `${data.username} joined the chat`,
             time: `${date.getHours()}:${date.getMinutes()}`,
-            sender: "Admin"
+            sender: "Admin",
+            pos:"left"
         })
 
         console.log("CheckPOinyt")
@@ -129,7 +130,8 @@ io.on("connection", socket => {
         socket.emit('userMessageRender', {
             message: "Welcome to chat",
             time: `${date.getHours()}:${date.getMinutes()}`,
-            sender: "Admin"
+            sender: "Admin",
+            pos:"left"
         })
 
         //Above Code Executes when new User Joins.
@@ -147,11 +149,15 @@ io.on("connection", socket => {
             return item.id == socket.id
         })
 
+        var collection=userArray.filter(item=>{
+            return item.id!=socket
+        })
         //Sending Message to all Group Members
         io.to(data.roomName).emit('userMessageRender', {
             message: data.message,
             sender: senderUser.name,
-            time: `${date.getHours()}:${date.getMinutes()}`
+            time: `${date.getHours()}:${date.getMinutes()}`,
+            pos:"left"
         })
 
         //Above Code Executes when user Send Message
