@@ -8,16 +8,24 @@
     <link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <div id="mainBody " class="d-flex flex-column bg-primary " style="height: 100vh;">
+<body  style="background-color: white !important;">
+    <div id="mainBody " class="row w-100 m-auto  " style="height: 100vh;">
+            <div class="col-6  d-flex align-items-center ">
 
-            <form action="/login" method="POST"  class="m-auto bdRad  form bg-dark p-4 d-flex flex-column " style="width:400px" id="userLoginForm">
-                <h2 class=" text-center text-white">Join'e Code</h2>
-                <p id="validError" class=" text-success text-center"><%=validError %></p>
-                <input id="userName" type="text" name="userName" placeholder="Display Name" value="<%= nameValue %>"  class="form-control m-1 bg-light br3 p-2 border-0 border-black" required >
-                <input id="roomName" type="text" name="roomName" placeholder="Room Name" value="<%= roomValue %>" onchange="checkVal(this.value)" class="form-control m-1 bg-light br3 p-2 border-0 border-black" required >
-                <button type="submit" class="form-control btn-primary m-1">Let's Go</button>
-            </form>
+                <div class="  text-center  px-3 my-auto">
+                    <img src="illus.svg" alt="" class="  " width="90%">
+                </div>
+            </div>
+            <div class="col-5 text-center  align-items-center d-flex">
+
+                <form  action="/login" method="POST"  class="rounded bdRad   p-4 mx-auto my-auto d-flex flex-column " style="width:400px;transform: scale(1.1);" id="userLoginForm">
+                    <h2 class=" text-center text-white">Join'e Chat n Code</h2>
+                    <p id="validError" class=" text-success text-center"><%=validError %></p>
+                    <input id="userName" type="text" name="userName" placeholder="Display Name" value="<%= nameValue %>"  class="form-control shadow m-1 bg-light br3 p-2 border-0 border-black" required >
+                    <input id="roomName" type="text" name="roomName" placeholder="Room Name" value="<%= roomValue %>" onchange="checkVal(this.value)" class="form-control shadow m-1 bg-light br3 p-2 border-0 border-black" required >
+                    <button type="submit" class="form-control shadow  btn-primary m-1">Let's Go</button>
+                </form>
+            </div>
      
             <script src="socket.io/socket.io.js"></script>
     </div>

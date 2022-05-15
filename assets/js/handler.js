@@ -33,7 +33,7 @@ function sidebarView() {
 
 document.getElementById('inputfile').addEventListener('change', function () {
 
-    console.log("DOne")
+    console.log("Done")
     var fr = new FileReader();
     fr.onload = function () {
         document.getElementById('codeInput').textContent = fr.result;
@@ -44,3 +44,42 @@ document.getElementById('inputfile').addEventListener('change', function () {
     this.value=null
 
 })
+
+
+
+document.getElementById('messageInput').addEventListener('keypress', function (e) {
+
+
+    console.log(e.target.value)
+    socket.emit('checkEmotion',{
+        text:messageInput.value
+    })
+    
+
+})
+
+
+
+
+function loadMessages(){
+    setTimeout(()=>{
+
+        let messages=JSON.parse(localStorage.getItem(`${userName.innerHTML}@${roomName.innerHTML}`))
+        console.log(messages)
+        messages.map(element => {
+            return generateMessage(JSON.parse(element))
+        });
+
+    },1000)
+}
+
+
+function saveMessage(){
+    let lastMsgArray=[]
+    for(let i=messageArray.length;i>=messageArray.length-7;i--){
+        lastMsgArray.push(messageArray[i])
+    }
+
+    lastMsgArray.reverse()
+    localStorage.setItem(`${userName.innerHTML}@${roomName.innerHTML}`,JSON.stringify(lastMsgArray))
+}

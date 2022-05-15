@@ -39,12 +39,14 @@ function playSound(){
 
 
 
-
+let messageArray=[]
 
 //Function to Add a new Message
 generateMessage=(data)=>{
   
-    //Creating a New Message
+    if(data!=null){
+            console.log(data)
+             //Creating a New Message
     var node=messageDiv.lastElementChild;
     var message=node.cloneNode(true)
 
@@ -52,6 +54,11 @@ generateMessage=(data)=>{
     message.firstElementChild.firstElementChild.innerHTML=data.sender;
     message.firstElementChild.lastElementChild.innerHTML=data.time;
     message.lastElementChild.innerHTML=data.message;
+
+
+    messageArray.push(JSON.stringify({sender:data.sender,time:data.time,message:data.message}))
+
+
     // message.classList.add(data.pos);
     message.style.whiteSpace="pre";
     message.classList.add('darkBg')
@@ -64,6 +71,10 @@ generateMessage=(data)=>{
 
     //Returning Message Height
     return message.offsetHeight
+    }else{
+        console.log("Null Data")
+    }
+   
 
 }
 
@@ -129,6 +140,9 @@ socket.on('codeCompiled',(data)=>{
     codeBtn.classList.remove('fa-spin')
     codeBtn.classList.add('fa-play')
     codeOutput.value=data
+})
+socket.on('emotionChecked',(data)=>{
+    console.log(data.result.type)
 })
 
 

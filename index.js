@@ -191,6 +191,29 @@ io.on("connection", socket => {
             res.redirect('/loginPost')
           });
     })
+    socket.on('checkEmotion',async(data)=>{
+        const axios = require("axios");
+
+const encodedParams = new URLSearchParams();
+encodedParams.append("text", data.text);
+
+const options = {
+  method: 'POST',
+  url: 'https://twinword-sentiment-analysis.p.rapidapi.com/analyze/',
+  headers: {
+    'content-type': 'application/x-www-form-urlencoded',
+    'X-RapidAPI-Host': 'twinword-sentiment-analysis.p.rapidapi.com',
+    'X-RapidAPI-Key': '710d6e061dmsh98b84ba69026524p1b8a91jsnc9f00a492a48'
+  },
+  data: encodedParams
+};
+
+axios.request(options).then(function (response) {
+	console.log(response.data);
+}).catch(function (error) {
+	console.error(error);
+});
+    })
 
     //Emits when User Leaves Chat
     socket.on('disconnect',()=>{

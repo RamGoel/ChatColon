@@ -14,7 +14,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body class="bodyDark" id="bodyMain">
+<body onload="loadMessages()" onbeforeunload="saveMessage()" >
 
     <audio id="messageTone" style="display: none;">
         <source src="tone.ogg" type="audio/ogg">
