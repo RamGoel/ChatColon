@@ -13,7 +13,7 @@ Now clone the forked repository to your system. Go to your GitHub account, open 
 
 
 ```
-git clone https://github.com/{your-github-username}/Hacktober-2022.git
+git clone https://github.com/{your-github-username}/ChatColon.git
 
 ```
 
