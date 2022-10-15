@@ -54,7 +54,6 @@ Start the server
 ## Features
 
 - Light/dark mode toggle
-
 - Cross platform
 - Mostly Programming Language Support
 - Users can make Groups
@@ -62,6 +61,9 @@ Start the server
 - User JOIN/LEAVE Notifications
 - Attractive UI
 - Share Code between your Group
+- Executes File Code
+- Notifcation Tones
+- Single Page App
 
 
 
